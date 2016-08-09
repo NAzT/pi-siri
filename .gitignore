@@ -1,3 +1,4 @@
 persist
+microgear-*
 node_modules
 .DS_Store
