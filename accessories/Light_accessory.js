@@ -3,44 +3,8 @@ var Service = require('../').Service;
 var Characteristic = require('../').Characteristic;
 var uuid = require('../').uuid;
 
-<<<<<<< HEAD
 var worker = require("../netpie_worker.js");
 var microgear = worker.mqtt; 
-=======
-var mqtt    = require('mqtt');
-var client  = mqtt.connect('mqtt://mqtt.espert.io');
- 
-client.on('connect', function () {
-  console.log("mqtt connect"); 
-});
-
-var MicroGear = require('microgear');
-
-const APPID  = "HelloNETPIE";
-const KEY    = "pekUCWqOlUvkgl8";
-const SECRET = "f1OP4WTLHSuQHtrppykFtbxiA";
-
-var microgear = MicroGear.create({
-    key : KEY,
-    secret : SECRET
-});
-
-microgear.on('connected', function() {
-    console.log('Connected...');
-    microgear.setAlias("sirigear");
-});
-
-microgear.on('message', function(topic,body) {
-    console.log('incoming : '+topic+' : '+body);
-});
-
-microgear.on('closed', function() {
-    console.log('Closed...');
-});
-
-microgear.connect(APPID);
-
->>>>>>> 40fe801ea0b42a3838391ec744924207eea717de
 // here's a fake hardware device that we'll expose to HomeKit
 var FAKE_LIGHT = {
   powerOn: false,
@@ -49,7 +13,6 @@ var FAKE_LIGHT = {
   setPowerOn: function(on) { 
     console.log("XTurning the light %s!", on ? "on" : "off");
     FAKE_LIGHT.powerOn = on;
-<<<<<<< HEAD
      if (on) {
       microgear.chat("plugDIM001", "255");
       microgear.chat("plug001", "ON");
@@ -62,28 +25,11 @@ var FAKE_LIGHT = {
       microgear.chat("light001", "OFF");
       microgear.chat("plug002", "OFF");
      } 
-=======
-    client.publish('FAKE_LIGHT', String(on));
-   if (on) {
-    microgear.chat("plugDIM001", "255");
-    microgear.chat("plug001", "ON");
-    microgear.chat("plug002", "ON");
-   }
-   else {
-    microgear.chat("plugDIM001", "0");
-    microgear.chat("plug001", "OFF");
-    microgear.chat("plug002", "OFF");
-   } 
->>>>>>> 40fe801ea0b42a3838391ec744924207eea717de
   },
   setBrightness: function(brightness) {
     microgear.chat("light001", "ON");
     console.log("Setting light brightness to %s", brightness);
     FAKE_LIGHT.brightness = brightness;
-<<<<<<< HEAD
-=======
-    client.publish('FAKE_LIGHT', String(brightness));
->>>>>>> 40fe801ea0b42a3838391ec744924207eea717de
     microgear.chat("plugDIM001", String(brightness*2.55));
   },
   identify: function() {
