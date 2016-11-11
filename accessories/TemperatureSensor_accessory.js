@@ -5,14 +5,15 @@ var uuid = require('../').uuid;
 
 // here's a fake temperature sensor device that we'll expose to HomeKit
 var FAKE_SENSOR = {
-  currentTemperature: 50,
+  currentTemperature: 30,
   getTemperature: function() { 
     console.log("Getting the current temperature!");
     return FAKE_SENSOR.currentTemperature;
   },
   randomizeTemperature: function() {
     // randomize temperature to a value between 0 and 100
-    FAKE_SENSOR.currentTemperature = Math.round(Math.random() * 100);
+    //FAKE_SENSOR.currentTemperature = Math.round(Math.random() * 100);
+    FAKE_SENSOR.currentTemperature = 26;
   }
 }
 

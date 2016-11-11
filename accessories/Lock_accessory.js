@@ -1,16 +1,23 @@
 var Accessory = require('../').Accessory;
 var Service = require('../').Service;
 var Characteristic = require('../').Characteristic;
-var uuid = require('../').uuid;
+var uuid = require('../').uuid; 
+
+var worker = require("../netpie_worker.js");
+var microgear = worker.mqtt;
+
 
 // here's a fake hardware device that we'll expose to HomeKit
 var FAKE_LOCK = {
   locked: false,
   lock: function() { 
+    microgear.chat("door001", "OFF"); 
     console.log("Locking the lock!");
     FAKE_LOCK.locked = true;
   },
   unlock: function() { 
+    microgear.chat("door001", "ON"); 
+    //setTimeout(function() { microgear.chat("door001", "OFF");  }, 3000);
     console.log("Unlocking the lock!");
     FAKE_LOCK.locked = false;
   },
