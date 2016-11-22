@@ -17,7 +17,7 @@
     "microgear": "^0.7.1",
     "mqtt": "^1.13.0",
     "node-persist": "^0.0.8",
-    "microgear": "^0.7.1",
+    "microgear": "^0.7.1"
   },
   "devDependencies": {
     "simple-plist": "0.0.4"
